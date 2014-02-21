@@ -1,0 +1,725 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xb5717d7b, pid=12632, tid=3078052672
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_51-b13) (build 1.7.0_51-b13)
+# Java VM: Java HotSpot(TM) Client VM (24.51-b03 mixed mode linux-x86 )
+# Problematic frame:
+# J  java.nio.HeapByteBuffer.getShort()S
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0xb7607800):  JavaThread "main" [_thread_in_Java, id=12635, stack(0xb7725000,0xb7776000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=128 (), si_addr=0x00000000
+
+Registers:
+EAX=0xb16694f0, EBX=0xb16694f0, ECX=0xa198c890, EDX=0x00000002
+ESP=0xb77728e0, EBP=0xb7772978, ESI=0xa198c890, EDI=0xb5717d60
+EIP=0xb5717d7b, EFLAGS=0x00210282, CR2=0xb7740100
+
+Top of Stack: (sp=0xb77728e0)
+0xb77728e0:   b16657e3 b777291c b1667d40 b15da558
+0xb77728f0:   a198c890 b5717d60 b77729e0 b562ccc2
+0xb7772900:   b15da558 00000002 a198c890 b777290c
+0xb7772910:   b15da524 b777293c b1667c20 00000000
+0xb7772920:   b15da558 00000000 b7772940 b77729e0
+0xb7772930:   b5717d80 00000000 a198c890 a198c890
+0xb7772940:   b777297c b5603207 b7772978 b56033e5
+0xb7772950:   b56033e5 a198c890 b7772958 b18ecd6d 
+
+Instructions: (pc=0xb5717d7b)
+0xb5717d5b:   85 30 53 f1 ff 89 84 24 00 c0 ff ff 55 83 ec 68
+0xb5717d6b:   ba 02 00 00 00 8b f1 8b ce 89 74 24 58 90 90 90
+0xb5717d7b:   e8 e0 82 00 00 8b 4c 24 58 8b 71 20 03 c6 0f be
+0xb5717d8b:   59 25 83 fb 00 0f 84 33 00 00 00 8b 71 28 3b 46 
+
+Register to memory mapping:
+
+EAX=0xb16694f0 is an oop
+{method} 
+ - klass: {other class}
+EBX=0xb16694f0 is an oop
+{method} 
+ - klass: {other class}
+ECX=0xa198c890 is an oop
+java.nio.HeapByteBuffer 
+ - klass: 'java/nio/HeapByteBuffer'
+EDX=0x00000002 is an unknown value
+ESP=0xb77728e0 is pointing into the stack for thread: 0xb7607800
+EBP=0xb7772978 is pointing into the stack for thread: 0xb7607800
+ESI=0xa198c890 is an oop
+java.nio.HeapByteBuffer 
+ - klass: 'java/nio/HeapByteBuffer'
+EDI=0xb5717d60 is at entry_point+16 in (nmethod*)0xb5717c48
+
+
+Stack: [0xb7725000,0xb7776000],  sp=0xb77728e0,  free space=310k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J  java.nio.HeapByteBuffer.getShort()S
+j  sun.reflect.annotation.AnnotationParser.parseAnnotations2([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/util/Map;+39
+J  sun.reflect.annotation.AnnotationParser.parseAnnotations([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/util/Map;
+j  java.lang.Class.getAnnotation(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;+13
+j  com.google.inject.internal.InjectorImpl.createUninitializedBinding(Lcom/google/inject/Key;Lcom/google/inject/internal/Scoping;Ljava/lang/Object;Lcom/google/inject/internal/Errors;Z)Lcom/google/inject/internal/BindingImpl;+60
+j  com.google.inject.internal.InjectorImpl.createJustInTimeBinding(Lcom/google/inject/Key;Lcom/google/inject/internal/Errors;ZLcom/google/inject/internal/InjectorImpl$JitLimitation;)Lcom/google/inject/internal/BindingImpl;+188
+j  com.google.inject.internal.InjectorImpl.createJustInTimeBindingRecursive(Lcom/google/inject/Key;Lcom/google/inject/internal/Errors;ZLcom/google/inject/internal/InjectorImpl$JitLimitation;)Lcom/google/inject/internal/BindingImpl;+89
+j  com.google.inject.internal.InjectorImpl.getJustInTimeBinding(Lcom/google/inject/Key;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InjectorImpl$JitLimitation;)Lcom/google/inject/internal/BindingImpl;+136
+j  com.google.inject.internal.InjectorImpl.getBindingOrThrow(Lcom/google/inject/Key;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InjectorImpl$JitLimitation;)Lcom/google/inject/internal/BindingImpl;+24
+j  com.google.inject.internal.InjectorImpl.getProviderOrThrow(Lcom/google/inject/Key;Lcom/google/inject/internal/Errors;)Lcom/google/inject/Provider;+6
+j  com.google.inject.internal.InjectorImpl.getProvider(Lcom/google/inject/Key;)Lcom/google/inject/Provider;+12
+j  com.google.inject.internal.InjectorImpl.getProvider(Ljava/lang/Class;)Lcom/google/inject/Provider;+5
+j  com.google.inject.internal.InjectorImpl.getInstance(Ljava/lang/Class;)Ljava/lang/Object;+2
+j  org.sonatype.guice.bean.reflect.AbstractDeferredClass.get()Ljava/lang/Object;+8
+j  com.google.inject.internal.ProviderInternalFactory.provision(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/spi/Dependency;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+7
+j  com.google.inject.internal.InternalFactoryToInitializableAdapter.provision(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/spi/Dependency;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+6
+j  com.google.inject.internal.ProviderInternalFactory$1.call()Ljava/lang/Object;+20
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+30
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+135
+j  com.google.inject.internal.ProvisionListenerStackCallback.provision(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ProvisionListenerStackCallback$ProvisionCallback;)Ljava/lang/Object;+18
+j  com.google.inject.internal.ProviderInternalFactory.circularGet(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+99
+j  com.google.inject.internal.InternalFactoryToInitializableAdapter.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+19
+j  com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+19
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.ProviderToInternalFactoryAdapter.get()Ljava/lang/Object;+21
+j  com.google.inject.Scopes$1$1.get()Ljava/lang/Object;+22
+j  com.google.inject.internal.InternalFactoryToProviderAdapter.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+5
+j  com.google.inject.internal.InjectorImpl$3$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+45
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.InjectorImpl$3.get()Ljava/lang/Object;+25
+j  org.sonatype.guice.bean.locators.LazyBeanEntry.getValue()Ljava/lang/Object;+4
+j  org.sonatype.guice.plexus.locators.LazyPlexusBean.getValue()Ljava/lang/Object;+4
+j  org.sonatype.guice.plexus.binders.PlexusRequirements$RequirementProvider.get()Ljava/lang/Object;+28
+j  org.sonatype.guice.plexus.binders.ProvidedPropertyBinding.injectProperty(Ljava/lang/Object;)V+9
+j  org.sonatype.guice.bean.inject.BeanInjector.injectMembers(Ljava/lang/Object;)V+26
+j  com.google.inject.internal.MembersInjectorImpl.injectMembers(Ljava/lang/Object;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Z)V+108
+j  com.google.inject.internal.ConstructorInjector.provision(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+65
+j  com.google.inject.internal.ConstructorInjector.access$000(Lcom/google/inject/internal/ConstructorInjector;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+4
+j  com.google.inject.internal.ConstructorInjector$1.call()Ljava/lang/Object;+16
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+30
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+135
+j  com.google.inject.internal.ProvisionListenerStackCallback.provision(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ProvisionListenerStackCallback$ProvisionCallback;)Ljava/lang/Object;+18
+j  com.google.inject.internal.ConstructorInjector.construct(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Ljava/lang/Class;ZLcom/google/inject/internal/ProvisionListenerStackCallback;)Ljava/lang/Object;+94
+j  com.google.inject.internal.ConstructorBindingImpl$Factory.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+65
+j  com.google.inject.internal.InjectorImpl$3$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+45
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.InjectorImpl$3.get()Ljava/lang/Object;+25
+j  com.google.inject.internal.InjectorImpl.getInstance(Ljava/lang/Class;)Ljava/lang/Object;+5
+j  org.sonatype.guice.bean.reflect.AbstractDeferredClass.get()Ljava/lang/Object;+8
+j  com.google.inject.internal.ProviderInternalFactory.provision(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/spi/Dependency;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+7
+j  com.google.inject.internal.InternalFactoryToInitializableAdapter.provision(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/spi/Dependency;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+6
+j  com.google.inject.internal.ProviderInternalFactory$1.call()Ljava/lang/Object;+20
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+30
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+135
+j  com.google.inject.internal.ProvisionListenerStackCallback.provision(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ProvisionListenerStackCallback$ProvisionCallback;)Ljava/lang/Object;+18
+j  com.google.inject.internal.ProviderInternalFactory.circularGet(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+99
+j  com.google.inject.internal.InternalFactoryToInitializableAdapter.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+19
+j  com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+19
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.ProviderToInternalFactoryAdapter.get()Ljava/lang/Object;+21
+j  com.google.inject.Scopes$1$1.get()Ljava/lang/Object;+22
+j  com.google.inject.internal.InternalFactoryToProviderAdapter.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+5
+j  com.google.inject.internal.InjectorImpl$3$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+45
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.InjectorImpl$3.get()Ljava/lang/Object;+25
+j  org.sonatype.guice.bean.locators.LazyBeanEntry.getValue()Ljava/lang/Object;+4
+j  org.sonatype.guice.plexus.locators.LazyPlexusBean.getValue()Ljava/lang/Object;+4
+j  org.sonatype.guice.plexus.binders.PlexusRequirements$RequirementProvider.get()Ljava/lang/Object;+28
+j  org.sonatype.guice.plexus.binders.ProvidedPropertyBinding.injectProperty(Ljava/lang/Object;)V+9
+j  org.sonatype.guice.bean.inject.BeanInjector.injectMembers(Ljava/lang/Object;)V+26
+j  com.google.inject.internal.MembersInjectorImpl.injectMembers(Ljava/lang/Object;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Z)V+108
+j  com.google.inject.internal.ConstructorInjector.provision(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+65
+j  com.google.inject.internal.ConstructorInjector.access$000(Lcom/google/inject/internal/ConstructorInjector;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+4
+j  com.google.inject.internal.ConstructorInjector$1.call()Ljava/lang/Object;+16
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+30
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+135
+j  com.google.inject.internal.ProvisionListenerStackCallback.provision(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ProvisionListenerStackCallback$ProvisionCallback;)Ljava/lang/Object;+18
+j  com.google.inject.internal.ConstructorInjector.construct(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Ljava/lang/Class;ZLcom/google/inject/internal/ProvisionListenerStackCallback;)Ljava/lang/Object;+94
+j  com.google.inject.internal.ConstructorBindingImpl$Factory.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+65
+j  com.google.inject.internal.InjectorImpl$3$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+45
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.InjectorImpl$3.get()Ljava/lang/Object;+25
+j  com.google.inject.internal.InjectorImpl.getInstance(Ljava/lang/Class;)Ljava/lang/Object;+5
+j  org.sonatype.guice.bean.reflect.AbstractDeferredClass.get()Ljava/lang/Object;+8
+j  com.google.inject.internal.ProviderInternalFactory.provision(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/spi/Dependency;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+7
+j  com.google.inject.internal.InternalFactoryToInitializableAdapter.provision(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/spi/Dependency;Lcom/google/inject/internal/ConstructionContext;)Ljava/lang/Object;+6
+j  com.google.inject.internal.ProviderInternalFactory$1.call()Ljava/lang/Object;+20
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+30
+j  com.google.inject.internal.ProvisionListenerStackCallback$Provision.provision()Ljava/lang/Object;+135
+j  com.google.inject.internal.ProvisionListenerStackCallback.provision(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/internal/ProvisionListenerStackCallback$ProvisionCallback;)Ljava/lang/Object;+18
+j  com.google.inject.internal.ProviderInternalFactory.circularGet(Ljavax/inject/Provider;Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+99
+j  com.google.inject.internal.InternalFactoryToInitializableAdapter.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+19
+j  com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+19
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.ProviderToInternalFactoryAdapter.get()Ljava/lang/Object;+21
+j  com.google.inject.Scopes$1$1.get()Ljava/lang/Object;+22
+j  com.google.inject.internal.InternalFactoryToProviderAdapter.get(Lcom/google/inject/internal/Errors;Lcom/google/inject/internal/InternalContext;Lcom/google/inject/spi/Dependency;Z)Ljava/lang/Object;+5
+j  com.google.inject.internal.InjectorImpl$3$1.call(Lcom/google/inject/internal/InternalContext;)Ljava/lang/Object;+45
+j  com.google.inject.internal.InjectorImpl.callInContext(Lcom/google/inject/internal/ContextualCallable;)Ljava/lang/Object;+62
+j  com.google.inject.internal.InjectorImpl$3.get()Ljava/lang/Object;+25
+...<more frames>...
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0xb766e800 JavaThread "Service Thread" daemon [_thread_blocked, id=12641, stack(0xa0daf000,0xa0e00000)]
+  0xb766cc00 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=12640, stack(0xa0f2e000,0xa0faf000)]
+  0xb766b000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=12639, stack(0xa0faf000,0xa1000000)]
+  0xb765b800 JavaThread "Finalizer" daemon [_thread_blocked, id=12638, stack(0xa1506000,0xa1557000)]
+  0xb7659000 JavaThread "Reference Handler" daemon [_thread_blocked, id=12637, stack(0xa1557000,0xa15a8000)]
+=>0xb7607800 JavaThread "main" [_thread_in_Java, id=12635, stack(0xb7725000,0xb7776000)]
+
+Other Threads:
+  0xb7657800 VMThread [stack: 0xa15a8000,0xa1629000] [id=12636]
+  0xb7679000 WatcherThread [stack: 0xa0d2e000,0xa0daf000] [id=12642]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 4800K, used 596K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K,   1% used [0xa1980000, 0xa19951f8, 0xa1db0000)
+  from space 512K, 100% used [0xa1e30000, 0xa1eb0000, 0xa1eb0000)
+  to   space 512K,   0% used [0xa1db0000, 0xa1db0000, 0xa1e30000)
+ tenured generation   total 10752K, used 3326K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  30% used [0xa6d80000, 0xa70bf9c0, 0xa70bfa00, 0xa7800000)
+ compacting perm gen  total 12288K, used 5389K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  43% used [0xb1580000, 0xb1ac3610, 0xb1ac3800, 0xb2180000)
+No shared spaces configured.
+
+Card table byte_map: [0xa18e1000,0xa1980000] byte_map_base: 0xa13d4400
+
+Polling page: 0xb778d000
+
+Code Cache  [0xb5600000, 0xb5728000, 0xb7600000)
+ total_blobs=536 nmethods=394 adapters=79 free_code_cache=31613Kb largest_free_block=32372608
+
+Compilation events (10 events):
+Event: 1.008 Thread 0xb766cc00  389             com.google.common.collect.CustomConcurrentHashMap::expiresAfterAccess (15 bytes)
+Event: 1.008 Thread 0xb766cc00 nmethod 389 0xb571f448 code [0xb571f540, 0xb571f5f0]
+Event: 1.021 Thread 0xb766cc00  390             com.google.common.collect.CustomConcurrentHashMap$2::poll (2 bytes)
+Event: 1.021 Thread 0xb766cc00 nmethod 390 0xb571f648 code [0xb571f740, 0xb571f7c0]
+Event: 1.031 Thread 0xb766cc00  392             java.util.LinkedHashMap::get (25 bytes)
+Event: 1.031 Thread 0xb766cc00 nmethod 392 0xb571fac8 code [0xb571fbe0, 0xb571fd5c]
+Event: 1.031 Thread 0xb766cc00  393             java.nio.Buffer::nextGetIndex (38 bytes)
+Event: 1.031 Thread 0xb766cc00 nmethod 393 0xb571ff48 code [0xb5720050, 0xb572014c]
+Event: 1.031 Thread 0xb766cc00  394             java.lang.Class::getClassLoader (28 bytes)
+Event: 1.032 Thread 0xb766cc00 nmethod 394 0xb5720208 code [0xb5720350, 0xb5720580]
+
+GC Heap History (10 events):
+Event: 0.613 GC heap before
+{Heap before GC invocations=4 (full 0):
+ def new generation   total 4800K, used 4723K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K, 100% used [0xa1980000, 0xa1db0000, 0xa1db0000)
+  from space 512K,  84% used [0xa1db0000, 0xa1e1cc90, 0xa1e30000)
+  to   space 512K,   0% used [0xa1e30000, 0xa1e30000, 0xa1eb0000)
+ tenured generation   total 10752K, used 1828K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  17% used [0xa6d80000, 0xa6f49040, 0xa6f49200, 0xa7800000)
+ compacting perm gen  total 12288K, used 4222K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  34% used [0xb1580000, 0xb199fbe8, 0xb199fc00, 0xb2180000)
+No shared spaces configured.
+Event: 0.615 GC heap after
+Heap after GC invocations=5 (full 0):
+ def new generation   total 4800K, used 341K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K,   0% used [0xa1980000, 0xa1980000, 0xa1db0000)
+  from space 512K,  66% used [0xa1e30000, 0xa1e85538, 0xa1eb0000)
+  to   space 512K,   0% used [0xa1db0000, 0xa1db0000, 0xa1e30000)
+ tenured generation   total 10752K, used 1954K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  18% used [0xa6d80000, 0xa6f68978, 0xa6f68a00, 0xa7800000)
+ compacting perm gen  total 12288K, used 4222K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  34% used [0xb1580000, 0xb199fbe8, 0xb199fc00, 0xb2180000)
+No shared spaces configured.
+}
+Event: 0.684 GC heap before
+{Heap before GC invocations=5 (full 0):
+ def new generation   total 4800K, used 4629K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K, 100% used [0xa1980000, 0xa1db0000, 0xa1db0000)
+  from space 512K,  66% used [0xa1e30000, 0xa1e85538, 0xa1eb0000)
+  to   space 512K,   0% used [0xa1db0000, 0xa1db0000, 0xa1e30000)
+ tenured generation   total 10752K, used 1954K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  18% used [0xa6d80000, 0xa6f68978, 0xa6f68a00, 0xa7800000)
+ compacting perm gen  total 12288K, used 4334K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  35% used [0xb1580000, 0xb19bb8e8, 0xb19bba00, 0xb2180000)
+No shared spaces configured.
+Event: 0.686 GC heap after
+Heap after GC invocations=6 (full 0):
+ def new generation   total 4800K, used 343K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K,   0% used [0xa1980000, 0xa1980000, 0xa1db0000)
+  from space 512K,  67% used [0xa1db0000, 0xa1e05f38, 0xa1e30000)
+  to   space 512K,   0% used [0xa1e30000, 0xa1e30000, 0xa1eb0000)
+ tenured generation   total 10752K, used 2055K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  19% used [0xa6d80000, 0xa6f81ea8, 0xa6f82000, 0xa7800000)
+ compacting perm gen  total 12288K, used 4334K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  35% used [0xb1580000, 0xb19bb8e8, 0xb19bba00, 0xb2180000)
+No shared spaces configured.
+}
+Event: 0.814 GC heap before
+{Heap before GC invocations=6 (full 0):
+ def new generation   total 4800K, used 4631K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K, 100% used [0xa1980000, 0xa1db0000, 0xa1db0000)
+  from space 512K,  67% used [0xa1db0000, 0xa1e05f38, 0xa1e30000)
+  to   space 512K,   0% used [0xa1e30000, 0xa1e30000, 0xa1eb0000)
+ tenured generation   total 10752K, used 2055K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  19% used [0xa6d80000, 0xa6f81ea8, 0xa6f82000, 0xa7800000)
+ compacting perm gen  total 12288K, used 4637K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  37% used [0xb1580000, 0xb1a076d8, 0xb1a07800, 0xb2180000)
+No shared spaces configured.
+Event: 0.817 GC heap after
+Heap after GC invocations=7 (full 0):
+ def new generation   total 4800K, used 511K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K,   0% used [0xa1980000, 0xa1980000, 0xa1db0000)
+  from space 512K,  99% used [0xa1e30000, 0xa1eafff8, 0xa1eb0000)
+  to   space 512K,   0% used [0xa1db0000, 0xa1db0000, 0xa1e30000)
+ tenured generation   total 10752K, used 2440K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  22% used [0xa6d80000, 0xa6fe2188, 0xa6fe2200, 0xa7800000)
+ compacting perm gen  total 12288K, used 4637K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  37% used [0xb1580000, 0xb1a076d8, 0xb1a07800, 0xb2180000)
+No shared spaces configured.
+}
+Event: 0.924 GC heap before
+{Heap before GC invocations=7 (full 0):
+ def new generation   total 4800K, used 4799K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K, 100% used [0xa1980000, 0xa1db0000, 0xa1db0000)
+  from space 512K,  99% used [0xa1e30000, 0xa1eafff8, 0xa1eb0000)
+  to   space 512K,   0% used [0xa1db0000, 0xa1db0000, 0xa1e30000)
+ tenured generation   total 10752K, used 2440K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  22% used [0xa6d80000, 0xa6fe2188, 0xa6fe2200, 0xa7800000)
+ compacting perm gen  total 12288K, used 4944K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  40% used [0xb1580000, 0xb1a54190, 0xb1a54200, 0xb2180000)
+No shared spaces configured.
+Event: 0.927 GC heap after
+Heap after GC invocations=8 (full 0):
+ def new generation   total 4800K, used 512K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K,   0% used [0xa1980000, 0xa1980000, 0xa1db0000)
+  from space 512K, 100% used [0xa1db0000, 0xa1e30000, 0xa1e30000)
+  to   space 512K,   0% used [0xa1e30000, 0xa1e30000, 0xa1eb0000)
+ tenured generation   total 10752K, used 2930K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  27% used [0xa6d80000, 0xa705c868, 0xa705ca00, 0xa7800000)
+ compacting perm gen  total 12288K, used 4944K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  40% used [0xb1580000, 0xb1a54190, 0xb1a54200, 0xb2180000)
+No shared spaces configured.
+}
+Event: 1.025 GC heap before
+{Heap before GC invocations=8 (full 0):
+ def new generation   total 4800K, used 4800K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K, 100% used [0xa1980000, 0xa1db0000, 0xa1db0000)
+  from space 512K, 100% used [0xa1db0000, 0xa1e30000, 0xa1e30000)
+  to   space 512K,   0% used [0xa1e30000, 0xa1e30000, 0xa1eb0000)
+ tenured generation   total 10752K, used 2930K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  27% used [0xa6d80000, 0xa705c868, 0xa705ca00, 0xa7800000)
+ compacting perm gen  total 12288K, used 5388K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  43% used [0xb1580000, 0xb1ac3040, 0xb1ac3200, 0xb2180000)
+No shared spaces configured.
+Event: 1.030 GC heap after
+Heap after GC invocations=9 (full 0):
+ def new generation   total 4800K, used 512K [0xa1980000, 0xa1eb0000, 0xa6d80000)
+  eden space 4288K,   0% used [0xa1980000, 0xa1980000, 0xa1db0000)
+  from space 512K, 100% used [0xa1e30000, 0xa1eb0000, 0xa1eb0000)
+  to   space 512K,   0% used [0xa1db0000, 0xa1db0000, 0xa1e30000)
+ tenured generation   total 10752K, used 3326K [0xa6d80000, 0xa7800000, 0xb1580000)
+   the space 10752K,  30% used [0xa6d80000, 0xa70bf9c0, 0xa70bfa00, 0xa7800000)
+ compacting perm gen  total 12288K, used 5388K [0xb1580000, 0xb2180000, 0xb5580000)
+   the space 12288K,  43% used [0xb1580000, 0xb1ac3040, 0xb1ac3200, 0xb2180000)
+No shared spaces configured.
+}
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 1.023 Thread 0xb7607800 Threw 0xa1d9aa18 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.023 Thread 0xb7607800 Threw 0xa1d9b980 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.024 Thread 0xb7607800 Threw 0xa1da6e48 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.024 Thread 0xb7607800 Threw 0xa1da7b68 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.025 Thread 0xb7607800 Threw 0xa1da8828 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.031 Thread 0xb7607800 Threw 0xa1985028 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.031 Thread 0xb7607800 Threw 0xa19870a8 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.031 Thread 0xb7607800 Threw 0xa1987e38 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.031 Thread 0xb7607800 Threw 0xa1988b60 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u51/527/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1.032 Thread 0xb7607800 Implicit null exception at 0xb5717d7b to 0x00000000
+
+Events (10 events):
+Event: 1.024 loading class 0xa06b35a0
+Event: 1.024 loading class 0xa06b35a0 done
+Event: 1.025 Executing VM operation: GenCollectForAllocation
+Event: 1.030 Executing VM operation: GenCollectForAllocation done
+Event: 1.031 loading class 0xa0877018
+Event: 1.031 loading class 0xa0877018 done
+Event: 1.031 loading class 0xa06a0e38
+Event: 1.031 loading class 0xa06a0e38 done
+Event: 1.031 loading class 0xa06a0e38
+Event: 1.031 loading class 0xa06a0e38 done
+
+
+Dynamic libraries:
+00110000-00133000 r-xp 00000000 08:01 153021     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libjava.so
+00133000-00134000 rw-p 00022000 08:01 153021     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libjava.so
+00144000-0014f000 r-xp 00000000 08:01 152881     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libverify.so
+0014f000-00150000 rw-p 0000b000 08:01 152881     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libverify.so
+00150000-00166000 r-xp 00000000 08:01 924293     /lib/i386-linux-gnu/libnsl-2.15.so
+00166000-00167000 r--p 00015000 08:01 924293     /lib/i386-linux-gnu/libnsl-2.15.so
+00167000-00168000 rw-p 00016000 08:01 924293     /lib/i386-linux-gnu/libnsl-2.15.so
+00168000-0016a000 rw-p 00000000 00:00 0 
+001ba000-001d1000 r-xp 00000000 08:01 153076     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libzip.so
+001d1000-001d2000 rw-p 00017000 08:01 153076     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libzip.so
+002ac000-002b7000 r-xp 00000000 08:01 924313     /lib/i386-linux-gnu/libnss_files-2.15.so
+002b7000-002b8000 r--p 0000a000 08:01 924313     /lib/i386-linux-gnu/libnss_files-2.15.so
+002b8000-002b9000 rw-p 0000b000 08:01 924313     /lib/i386-linux-gnu/libnss_files-2.15.so
+0039e000-0039f000 r-xp 00000000 00:00 0          [vdso]
+003d9000-003e7000 r-xp 00000000 08:01 153077     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libnio.so
+003e7000-003e8000 rw-p 0000e000 08:01 153077     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libnio.so
+0045f000-00466000 r-xp 00000000 08:01 924304     /lib/i386-linux-gnu/librt-2.15.so
+00466000-00467000 r--p 00006000 08:01 924304     /lib/i386-linux-gnu/librt-2.15.so
+00467000-00468000 rw-p 00007000 08:01 924304     /lib/i386-linux-gnu/librt-2.15.so
+00629000-0062c000 r-xp 00000000 08:01 924317     /lib/i386-linux-gnu/libdl-2.15.so
+0062c000-0062d000 r--p 00002000 08:01 924317     /lib/i386-linux-gnu/libdl-2.15.so
+0062d000-0062e000 rw-p 00003000 08:01 924317     /lib/i386-linux-gnu/libdl-2.15.so
+006c2000-006c9000 r-xp 00000000 08:01 924314     /lib/i386-linux-gnu/libnss_compat-2.15.so
+006c9000-006ca000 r--p 00006000 08:01 924314     /lib/i386-linux-gnu/libnss_compat-2.15.so
+006ca000-006cb000 rw-p 00007000 08:01 924314     /lib/i386-linux-gnu/libnss_compat-2.15.so
+0077a000-007a4000 r-xp 00000000 08:01 924310     /lib/i386-linux-gnu/libm-2.15.so
+007a4000-007a5000 r--p 00029000 08:01 924310     /lib/i386-linux-gnu/libm-2.15.so
+007a5000-007a6000 rw-p 0002a000 08:01 924310     /lib/i386-linux-gnu/libm-2.15.so
+00960000-00b04000 r-xp 00000000 08:01 924318     /lib/i386-linux-gnu/libc-2.15.so
+00b04000-00b06000 r--p 001a4000 08:01 924318     /lib/i386-linux-gnu/libc-2.15.so
+00b06000-00b07000 rw-p 001a6000 08:01 924318     /lib/i386-linux-gnu/libc-2.15.so
+00b07000-00b0a000 rw-p 00000000 00:00 0 
+00c27000-00c3a000 r-xp 00000000 08:01 153104     /home/stud/java/jdk1.7.0_51/lib/i386/jli/libjli.so
+00c3a000-00c3b000 rw-p 00012000 08:01 153104     /home/stud/java/jdk1.7.0_51/lib/i386/jli/libjli.so
+00c4a000-00c61000 r-xp 00000000 08:01 924302     /lib/i386-linux-gnu/libpthread-2.15.so
+00c61000-00c62000 r--p 00016000 08:01 924302     /lib/i386-linux-gnu/libpthread-2.15.so
+00c62000-00c63000 rw-p 00017000 08:01 924302     /lib/i386-linux-gnu/libpthread-2.15.so
+00c63000-00c65000 rw-p 00000000 00:00 0 
+00c8d000-00c97000 r-xp 00000000 08:01 924311     /lib/i386-linux-gnu/libnss_nis-2.15.so
+00c97000-00c98000 r--p 00009000 08:01 924311     /lib/i386-linux-gnu/libnss_nis-2.15.so
+00c98000-00c99000 rw-p 0000a000 08:01 924311     /lib/i386-linux-gnu/libnss_nis-2.15.so
+00ef2000-00f07000 r-xp 00000000 08:01 153078     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libnet.so
+00f07000-00f08000 rw-p 00014000 08:01 153078     /home/stud/java/jdk1.7.0_51/jre/lib/i386/libnet.so
+00f70000-00f90000 r-xp 00000000 08:01 924303     /lib/i386-linux-gnu/ld-2.15.so
+00f90000-00f91000 r--p 0001f000 08:01 924303     /lib/i386-linux-gnu/ld-2.15.so
+00f91000-00f92000 rw-p 00020000 08:01 924303     /lib/i386-linux-gnu/ld-2.15.so
+00f92000-01518000 r-xp 00000000 08:01 141294     /home/stud/java/jdk1.7.0_51/jre/lib/i386/client/libjvm.so
+01518000-01539000 rw-p 00586000 08:01 141294     /home/stud/java/jdk1.7.0_51/jre/lib/i386/client/libjvm.so
+01539000-01959000 rw-p 00000000 00:00 0 
+08048000-08049000 r-xp 00000000 08:01 153296     /home/stud/java/jdk1.7.0_51/bin/java
+08049000-0804a000 rw-p 00000000 08:01 153296     /home/stud/java/jdk1.7.0_51/bin/java
+09bb6000-09bd7000 rw-p 00000000 00:00 0          [heap]
+a0600000-a06d6000 rw-p 00000000 00:00 0 
+a06d6000-a0700000 ---p 00000000 00:00 0 
+a0800000-a0900000 rw-p 00000000 00:00 0 
+a0900000-a09e4000 rw-p 00000000 00:00 0 
+a09e4000-a0a00000 ---p 00000000 00:00 0 
+a0ada000-a0adc000 r--s 0000c000 08:01 1196189    /home/stud/netbeans-8.0beta/java/maven-nblib/netbeans-eventspy.jar
+a0adc000-a0ae2000 r--s 0003e000 08:01 1196195    /home/stud/netbeans-8.0beta/java/maven/lib/maven-compat-3.0.5.jar
+a0ae2000-a0b00000 r--s 0014f000 08:01 1196206    /home/stud/netbeans-8.0beta/java/maven/lib/sisu-guava-0.9.9.jar
+a0b00000-a0b21000 rw-p 00000000 00:00 0 
+a0b21000-a0c00000 ---p 00000000 00:00 0 
+a0c00000-a0cd6000 rw-p 00000000 00:00 0 
+a0cd6000-a0d00000 ---p 00000000 00:00 0 
+a0d00000-a0d03000 r--s 0001d000 08:01 1196193    /home/stud/netbeans-8.0beta/java/maven/lib/aether-impl-1.13.1.jar
+a0d03000-a0d05000 r--s 00000000 08:01 1195983    /home/stud/netbeans-8.0beta/java/maven/lib/plexus-component-annotations-1.5.5.jar
+a0d05000-a0d0b000 r--s 0002b000 08:01 1196152    /home/stud/netbeans-8.0beta/java/maven/lib/sisu-inject-plexus-2.3.0.jar
+a0d0b000-a0d0c000 r--s 00009000 08:01 1196207    /home/stud/netbeans-8.0beta/java/maven/lib/commons-cli-1.2.jar
+a0d0c000-a0d0e000 r--s 0000c000 08:01 1196115    /home/stud/netbeans-8.0beta/java/maven/lib/maven-aether-provider-3.0.5.jar
+a0d0e000-a0d16000 r--s 0004e000 08:01 1196160    /home/stud/netbeans-8.0beta/java/maven/lib/sisu-guice-3.1.0-no_aop.jar
+a0d16000-a0d19000 r--s 00033000 08:01 1196192    /home/stud/netbeans-8.0beta/java/maven/lib/plexus-utils-2.0.6.jar
+a0d19000-a0d20000 r--s 0003e000 08:01 1196172    /home/stud/netbeans-8.0beta/java/maven/lib/sisu-inject-bean-2.3.0.jar
+a0d20000-a0d23000 r--s 00025000 08:01 1196198    /home/stud/netbeans-8.0beta/java/maven/lib/maven-model-3.0.5.jar
+a0d23000-a0d25000 r--s 0000b000 08:01 1196181    /home/stud/netbeans-8.0beta/java/maven/lib/maven-artifact-3.0.5.jar
+a0d25000-a0d26000 r--s 00003000 08:01 1196201    /home/stud/netbeans-8.0beta/java/maven/lib/aether-spi-1.13.1.jar
+a0d26000-a0d28000 r--s 00009000 08:01 1196182    /home/stud/netbeans-8.0beta/java/maven/lib/maven-embedder-3.0.5.jar
+a0d28000-a0d2a000 r--s 0000a000 08:01 1196183    /home/stud/netbeans-8.0beta/java/maven/lib/maven-settings-3.0.5.jar
+a0d2a000-a0d2c000 r--s 00006000 08:01 1196042    /home/stud/netbeans-8.0beta/java/maven/lib/maven-repository-metadata-3.0.5.jar
+a0d2c000-a0d2e000 r--s 0000a000 08:01 1196171    /home/stud/netbeans-8.0beta/java/maven/lib/maven-plugin-api-3.0.5.jar
+a0d2e000-a0d2f000 ---p 00000000 00:00 0 
+a0d2f000-a0daf000 rw-p 00000000 00:00 0 
+a0daf000-a0db2000 ---p 00000000 00:00 0 
+a0db2000-a0e00000 rw-p 00000000 00:00 0 
+a0e00000-a0e21000 rw-p 00000000 00:00 0 
+a0e21000-a0f00000 ---p 00000000 00:00 0 
+a0f00000-a0f03000 r--s 00008000 08:01 1196103    /home/stud/netbeans-8.0beta/java/maven/lib/maven-settings-builder-3.0.5.jar
+a0f03000-a0f07000 r--s 0001c000 08:01 1196194    /home/stud/netbeans-8.0beta/java/maven/lib/aether-util-1.13.1.jar
+a0f07000-a0f13000 r--s 0007b000 08:01 1196205    /home/stud/netbeans-8.0beta/java/maven/lib/maven-core-3.0.5.jar
+a0f13000-a0f2e000 r--s 000e0000 08:01 1196179    /home/stud/netbeans-8.0beta/java/maven/lib/wagon-http-2.4-shaded.jar
+a0f2e000-a0f31000 ---p 00000000 00:00 0 
+a0f31000-a0faf000 rw-p 00000000 00:00 0 
+a0faf000-a0fb2000 ---p 00000000 00:00 0 
+a0fb2000-a1000000 rw-p 00000000 00:00 0 
+a1000000-a1200000 r--p 00000000 08:01 262293     /usr/lib/locale/locale-archive
+a1200000-a1221000 rw-p 00000000 00:00 0 
+a1221000-a1300000 ---p 00000000 00:00 0 
+a1300000-a1321000 rw-p 00000000 00:00 0 
+a1321000-a1400000 ---p 00000000 00:00 0 
+a1400000-a1421000 rw-p 00000000 00:00 0 
+a1421000-a1500000 ---p 00000000 00:00 0 
+a1500000-a1502000 r--s 0000d000 08:01 1196139    /home/stud/netbeans-8.0beta/java/maven/lib/plexus-interpolation-1.14.jar
+a1502000-a1506000 r--s 00012000 08:01 1196200    /home/stud/netbeans-8.0beta/java/maven/lib/aether-api-1.13.1.jar
+a1506000-a1509000 ---p 00000000 00:00 0 
+a1509000-a1557000 rw-p 00000000 00:00 0 
+a1557000-a155a000 ---p 00000000 00:00 0 
+a155a000-a15a8000 rw-p 00000000 00:00 0 
+a15a8000-a15a9000 ---p 00000000 00:00 0 
+a15a9000-a1674000 rw-p 00000000 00:00 0 
+a1674000-a1831000 r--s 039bf000 08:01 1194277    /home/stud/java/jdk1.7.0_51/jre/lib/rt.jar
+a1831000-a1892000 rw-p 00000000 00:00 0 
+a1892000-a18e1000 rw-p 00000000 00:00 0 
+a18e1000-a18e4000 rw-p 00000000 00:00 0 
+a18e4000-a190b000 rw-p 00000000 00:00 0 
+a190b000-a1911000 rw-p 00000000 00:00 0 
+a1911000-a195f000 rw-p 00000000 00:00 0 
+a195f000-a1965000 rw-p 00000000 00:00 0 
+a1965000-a197f000 rw-p 00000000 00:00 0 
+a197f000-a1eb0000 rw-p 00000000 00:00 0 
+a1eb0000-a6d80000 rw-p 00000000 00:00 0 
+a6d80000-a7800000 rw-p 00000000 00:00 0 
+a7800000-b1580000 rw-p 00000000 00:00 0 
+b1580000-b2180000 rw-p 00000000 00:00 0 
+b2180000-b5580000 rw-p 00000000 00:00 0 
+b5580000-b5585000 rw-p 00000000 00:00 0 
+b5585000-b5600000 rw-p 00000000 00:00 0 
+b5600000-b5728000 rwxp 00000000 00:00 0 
+b5728000-b76fd000 rw-p 00000000 00:00 0 
+b76fd000-b7700000 ---p 00000000 00:00 0 
+b7700000-b7702000 r--s 0000b000 08:01 1196170    /home/stud/netbeans-8.0beta/java/maven/lib/wagon-provider-api-2.4.jar
+b7702000-b7704000 r--s 00006000 08:01 1196086    /home/stud/netbeans-8.0beta/java/maven/lib/aether-connector-wagon-1.13.1.jar
+b7704000-b770b000 rw-p 00000000 00:00 0 
+b770b000-b7725000 rw-p 00000000 00:00 0 
+b7725000-b7728000 ---p 00000000 00:00 0 
+b7728000-b7778000 rw-p 00000000 00:00 0 
+b7778000-b7779000 r--s 00006000 08:01 1196138    /home/stud/netbeans-8.0beta/java/maven/lib/plexus-sec-dispatcher-1.3.jar
+b7779000-b777a000 r--s 00002000 08:01 1196208    /home/stud/netbeans-8.0beta/java/maven/lib/wagon-file-2.4.jar
+b777a000-b777f000 r--s 00020000 08:01 1196137    /home/stud/netbeans-8.0beta/java/maven/lib/maven-model-builder-3.0.5.jar
+b777f000-b7781000 r--s 00002000 08:01 1196199    /home/stud/netbeans-8.0beta/java/maven/lib/plexus-cipher-1.7.jar
+b7781000-b7783000 r--s 0000a000 08:01 1196162    /home/stud/netbeans-8.0beta/java/maven/boot/plexus-classworlds-2.4.jar
+b7783000-b7784000 r--p 002c5000 08:01 262293     /usr/lib/locale/locale-archive
+b7784000-b778c000 rw-s 00000000 08:01 164326     /tmp/hsperfdata_stud/12632
+b778c000-b778d000 rw-p 00000000 00:00 0 
+b778d000-b778e000 r--p 00000000 00:00 0 
+b778e000-b7790000 rw-p 00000000 00:00 0 
+bf884000-bf8a5000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dclassworlds.conf=/home/stud/netbeans-8.0beta/java/maven/bin/m2.conf -Dmaven.home=/home/stud/netbeans-8.0beta/java/maven 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.ngcamango.shopping.ShoppingTest -DnetbeansProjectMappings= -Dmaven.ext.class.path=/home/stud/netbeans-8.0beta/java/maven-nblib/netbeans-eventspy.jar -Djava.net.useSystemProxies=true surefire:test
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/home/stud/java/jdk1.7.0_51
+PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/stud/bin:/usr/local/java/jdk1.7.0_51/bin
+LD_LIBRARY_PATH=/home/stud/java/jdk1.7.0_51/jre/lib/amd64:/home/stud/java/jdk1.7.0_51/jre/lib/i386:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x5047e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x5047e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x3fc850], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x3fc850], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x3fc850], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x3fc850], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x3fdd40], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x3fee90], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: SIG_IGN, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGTERM: [libjvm.so+0x3fee90], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x3fee90], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:wheezy/sid
+
+uname:Linux 3.2.0-59-generic #90-Ubuntu SMP Tue Jan 7 22:47:22 UTC 2014 i686
+libc:glibc 2.15 NPTL 2.15 
+rlimit: STACK 8192k, CORE 0k, NPROC 7849, NOFILE 4096, AS infinity
+load average:0.31 0.24 0.19
+
+/proc/meminfo:
+MemTotal:        1025116 kB
+MemFree:           99896 kB
+Buffers:           33896 kB
+Cached:           164708 kB
+SwapCached:        15596 kB
+Active:           412808 kB
+Inactive:         438240 kB
+Active(anon):     310648 kB
+Inactive(anon):   355764 kB
+Active(file):     102160 kB
+Inactive(file):    82476 kB
+Unevictable:          16 kB
+Mlocked:              16 kB
+HighTotal:        139144 kB
+HighFree:           1820 kB
+LowTotal:         885972 kB
+LowFree:           98076 kB
+SwapTotal:        916476 kB
+SwapFree:         805528 kB
+Dirty:               168 kB
+Writeback:             0 kB
+AnonPages:        641936 kB
+Mapped:            59884 kB
+Shmem:             13920 kB
+Slab:              36656 kB
+SReclaimable:      18536 kB
+SUnreclaim:        18120 kB
+KernelStack:        3208 kB
+PageTables:         7844 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1429032 kB
+Committed_AS:    2520116 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       22172 kB
+VmallocChunk:      77448 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       4096 kB
+DirectMap4k:       61432 kB
+DirectMap4M:      847872 kB
+
+
+CPU:total 4 (2 cores per cpu, 1 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2370M CPU @ 2.40GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2394.580
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts mmx fxsr sse sse2 ss ht nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology tsc_reliable nonstop_tsc aperfmperf pni pclmulqdq ssse3 cx16 sse4_1 sse4_2 popcnt xsave avx hypervisor lahf_lm arat epb xsaveopt pln pts dtherm
+bogomips	: 4789.16
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2370M CPU @ 2.40GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2394.580
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts mmx fxsr sse sse2 ss ht nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology tsc_reliable nonstop_tsc aperfmperf pni pclmulqdq ssse3 cx16 sse4_1 sse4_2 popcnt xsave avx hypervisor lahf_lm arat epb xsaveopt pln pts dtherm
+bogomips	: 4789.16
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2370M CPU @ 2.40GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2394.580
+cache size	: 3072 KB
+physical id	: 1
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts mmx fxsr sse sse2 ss ht nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology tsc_reliable nonstop_tsc aperfmperf pni pclmulqdq ssse3 cx16 sse4_1 sse4_2 popcnt xsave avx hypervisor lahf_lm arat epb xsaveopt pln pts dtherm
+bogomips	: 4789.16
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2370M CPU @ 2.40GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2394.580
+cache size	: 3072 KB
+physical id	: 1
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts mmx fxsr sse sse2 ss ht nx rdtscp lm constant_tsc arch_perfmon pebs bts xtopology tsc_reliable nonstop_tsc aperfmperf pni pclmulqdq ssse3 cx16 sse4_1 sse4_2 popcnt xsave avx hypervisor lahf_lm arat epb xsaveopt pln pts dtherm
+bogomips	: 4789.16
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 1025116k(99896k free), swap 916476k(805528k free)
+
+vm_info: Java HotSpot(TM) Client VM (24.51-b03) for linux-x86 JRE (1.7.0_51-b13), built on Dec 18 2013 18:49:34 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Fri Feb 21 19:28:26 2014
+elapsed time: 1 seconds
+
